@@ -3,7 +3,8 @@ import { useAuth } from "./contexts/AuthContext";
 import { ROLES } from "./utils/roles";
 import HomePage from "./pages/Public/HomePage";
 import ProjectsPage from "./pages/Public/ProjectsPage";
-import ReportPage from "./pages/Public/ReportPage";
+import ProjectDetails from "./pages/Public/ProjectDetails";
+import ComplaintPage from "./pages/Public/ComplaintPage";
 import RevenuePage from "./pages/Public/RevenuePage";
 import Login from "./pages/Auth/Login";
 import DashboardPage from "./pages/Admin/DashboardPage";
@@ -35,7 +36,8 @@ const AppRoutes: React.FC = () => {
         {/* Public Routes */}
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/report" element={<ReportPage />} />
+        <Route path="/projects/:id" element={<ProjectDetails />} />
+        <Route path="/complaint" element={<ComplaintPage />} />
         <Route path="/revenue" element={<RevenuePage />} />
 
         {/* Admin Login */}

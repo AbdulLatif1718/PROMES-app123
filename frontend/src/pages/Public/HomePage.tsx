@@ -9,7 +9,7 @@ const images = [
 ];
 
 const HomePage: React.FC = () => {
-  const [currentImage, setCurrentImage] = useState(0);
+  const [, setCurrentImage] = useState(0);
 
   const nextImage = () => {
     setCurrentImage((prev) => (prev + 1) % images.length);

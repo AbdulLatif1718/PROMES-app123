@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation(); // Get the current route
+  const currentPath = location.pathname; // Current page path
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +21,9 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
+
+  // Function to check if the link is active
+  const isActive = (path: string) => currentPath === path ? 'font-bold text-purple-500' : 'hover:text-purple-500';
 
   return (
     <nav
@@ -34,13 +39,13 @@ const Navbar: React.FC = () => {
 
       {/* Desktop Navigation */}
       <div className="hidden md:flex space-x-8 text-black text-lg">
-        <Link to="/" className="font-bold hover:text-purple-500 transition">
+        <Link to="/" className={`transition ${isActive('/')}`}>
           Home
         </Link>
-        <Link to="/projects" className="hover:text-purple-500 transition">
+        <Link to="/projects" className={`transition ${isActive('/projects')}`}>
           Projects
         </Link>
-        <Link to="/complaint" className="hover:text-purple-500 transition">
+        <Link to="/complaint" className={`transition ${isActive('/complaint')}`}>
           Complaint
         </Link>
       </div>
@@ -81,21 +86,21 @@ const Navbar: React.FC = () => {
 
             <Link
               to="/"
-              className="font-bold hover:text-purple-500 transition"
+              className={`transition ${isActive('/')}`}
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link
               to="/projects"
-              className="hover:text-purple-500 transition"
+              className={`transition ${isActive('/projects')}`}
               onClick={() => setIsOpen(false)}
             >
               Projects
             </Link>
             <Link
               to="/complaint"
-              className="hover:text-purple-500 transition"
+              className={`transition ${isActive('/complaint')}`}
               onClick={() => setIsOpen(false)}
             >
               Complaint
