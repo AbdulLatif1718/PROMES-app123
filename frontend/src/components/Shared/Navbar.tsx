@@ -6,8 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation(); // Get the current route
-  const currentPath = location.pathname; // Current page path
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,8 +22,7 @@ const Navbar: React.FC = () => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
-  // Function to check if the link is active
-  const isActive = (path: string) => currentPath === path ? 'font-bold text-purple-500' : 'hover:text-purple-500';
+  const isActive = (path: string) => currentPath === path ? 'font-bold text-black' : 'hover:text-purple-500';
 
   return (
     <nav
@@ -32,8 +31,8 @@ const Navbar: React.FC = () => {
       }`}
     >
       {/* Logo */}
-      <div className="flex items-center space-x-2">
-        <img src="/logo.png" alt="PROMES Logo" className="h-10" />
+      <div className="flex items-center space-x-2 px-10">
+        <img src="/img/image.png" alt="PROMES Logo" className="h-10" />
         <span className="text-black text-lg font-semibold">PROMES</span>
       </div>
 
@@ -51,7 +50,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Search & Download Button */}
-      <div className="hidden md:flex items-center space-x-6">
+      <div className="hidden md:flex items-center space-x-6 pr-12">
         <FiSearch className="text-black text-xl cursor-pointer hover:text-purple-500 transition" />
         <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-5 py-2 rounded-lg shadow-md hover:scale-105 transition-transform">
           Download

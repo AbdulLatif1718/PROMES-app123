@@ -106,7 +106,7 @@ const Footer: React.FC = () => {
               alt="Promes logo"
               className="w-12 h-12"
               height="50"
-              src="https://storage.googleapis.com/a1aa/image/h7krEp4xrdtGgd5BabbES4bjjkTOKi-1emmVAoKhRKM.jpg"
+              src="/img/image.png"
               width="50"
             />
             <span className="font-bold">PROMES</span>
