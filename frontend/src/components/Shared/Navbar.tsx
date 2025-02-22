@@ -10,6 +10,10 @@ const Navbar: React.FC = () => {
   const currentPath = location.pathname;
 
   useEffect(() => {
+    window.scrollTo(0, 0); // Ensures scrolling to top on navigation
+  }, [location.pathname]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -22,7 +26,7 @@ const Navbar: React.FC = () => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
-  const isActive = (path: string) => currentPath === path ? 'font-bold text-black' : 'hover:text-purple-500';
+  const isActive = (path: string) => (currentPath === path ? 'font-bold text-black' : 'hover:text-purple-500');
 
   return (
     <nav
@@ -30,11 +34,11 @@ const Navbar: React.FC = () => {
         isScrolled ? "bg-white shadow-md" : "bg-white/80 backdrop-blur-md"
       }`}
     >
-      {/* Logo */}
-      <div className="flex items-center space-x-2 px-10">
+      {/* ✅ Logo as a NavLink */}
+      <Link to="/" className="flex items-center space-x-2 px-10 cursor-pointer">
         <img src="/img/image.png" alt="PROMES Logo" className="h-10" />
         <span className="text-black text-lg font-semibold">PROMES</span>
-      </div>
+      </Link>
 
       {/* Desktop Navigation */}
       <div className="hidden md:flex space-x-8 text-black text-lg">
@@ -73,35 +77,23 @@ const Navbar: React.FC = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-0 right-0 h-full w-4/5 bg-white shadow-lg flex flex-col items-center justify-center space-y-8 text-lg z-50"
+            className="fixed top-0 right-0 space-y-16 w-full bg-white shadow-lg flex flex-col items-center justify-center space-y-8 text-lg z-50 pt-24"
           >
             {/* Close Button */}
             <button
-              className="absolute top-4 right-4 text-black text-2xl focus:outline-none"
+              className="absolute top-6 right-4 text-black text-4xl focus:outline-none"
               onClick={() => setIsOpen(false)}
             >
               <FiX />
             </button>
 
-            <Link
-              to="/"
-              className={`transition ${isActive('/')}`}
-              onClick={() => setIsOpen(false)}
-            >
+            <Link to="/" className={`transition ${isActive('/')}`} onClick={() => setIsOpen(false)}>
               Home
             </Link>
-            <Link
-              to="/projects"
-              className={`transition ${isActive('/projects')}`}
-              onClick={() => setIsOpen(false)}
-            >
+            <Link to="/projects" className={`transition ${isActive('/projects')}`} onClick={() => setIsOpen(false)}>
               Projects
             </Link>
-            <Link
-              to="/complaint"
-              className={`transition ${isActive('/complaint')}`}
-              onClick={() => setIsOpen(false)}
-            >
+            <Link to="/complaint" className={`transition ${isActive('/complaint')}`} onClick={() => setIsOpen(false)}>
               Complaint
             </Link>
 

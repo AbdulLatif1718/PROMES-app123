@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Layout from "../../components/Shared/Layout";
-import { Star } from 'lucide-react';
+import Reviews from "../../components/Public/Reviews";
+import { Star } from "lucide-react";
 
 interface Project {
   images: string[];
@@ -10,37 +11,65 @@ interface Project {
   constructor: string;
   description: string;
   constructionDetails: string[];
-  reviews: number;
+  reviews: {
+    name: string;
+    date: string;
+    rating: number;
+    review: string;
+  }[];
+  reviewCount: number; // Add this for the total number of reviews
 }
 
 const ProjectDetails: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'description' | 'reviews'>('description');
+  const [activeTab, setActiveTab] = useState<"description" | "reviews">(
+    "description"
+  );
   const [selectedImage, setSelectedImage] = useState(0);
 
   const projectDetails: Project = {
     images: [
-      'https://storage.googleapis.com/a1aa/image/tZyD5d9rFgC0hnE5r6OjWRRIY7ci9AOICXjiEiF_Ez8.jpg',
-      'https://storage.googleapis.com/a1aa/image/7klHenz4kEetZvrvOAh7-76Z3jdOERQouu5j_BoGV0Q.jpg',
-      'https://storage.googleapis.com/a1aa/image/zg8Zn3bB75NWhfG7z1gu3I0FojaupPAqMsAyPY_fnlo.jpg'
+      "https://storage.googleapis.com/a1aa/image/tZyD5d9rFgC0hnE5r6OjWRRIY7ci9AOICXjiEiF_Ez8.jpg",
+      "https://storage.googleapis.com/a1aa/image/7klHenz4kEetZvrvOAh7-76Z3jdOERQouu5j_BoGV0Q.jpg",
+      "https://storage.googleapis.com/a1aa/image/zg8Zn3bB75NWhfG7z1gu3I0FojaupPAqMsAyPY_fnlo.jpg",
     ],
-    title: 'Tarkwa community center',
+    title: "Tarkwa community center",
     progress: 50,
-    location: 'Tarkwa',
-    constructor: 'Ninsou & co LTD',
-    description: 'Support AAA Animal Rescue by showing how much you love your pet with "I Love My Cat/Dog" charm bracelet. And remember, every purchase made off of the AMA SHOP goes directly to the medical expenses of our fur children',
+    location: "Tarkwa",
+    constructor: "Ninsou & co LTD",
+    description:
+      'Support AAA Animal Rescue by showing how much you love your pet with "I Love My Cat/Dog" charm bracelet. And remember, every purchase made off of the AMA SHOP goes directly to the medical expenses of our fur children',
     constructionDetails: [
-      'Exclusively handmade',
-      'Antique gold charms',
-      'Semi precious round smooth gemstone',
-      '8mm beads'
+      "Exclusively handmade",
+      "Antique gold charms",
+      "Semi precious round smooth gemstone",
+      "8mm beads",
     ],
-    reviews: 10
+    reviews: [
+      {
+        name: "Ninsou Abdul",
+        date: "24th January,2024",
+        rating: 3,
+        review:
+          "This building is an excellent example of thoughtful urban development. The exterior design is sleek and modern, while the interior is practical and welcoming. Ventilation is superb, ensuring a comfortable indoor atmosphere, and the use of energy-efficient materials makes it environmentally friendly.",
+      },
+      {
+        name: "Ishaah",
+        date: "24th January,2024",
+        rating: 5,
+        review:
+          "This building is an excellent example of thoughtful urban development. The exterior design is sleek and modern, while the interior is practical and welcoming. Ventilation is superb, ensuring a comfortable indoor atmosphere, and the use of energy-efficient materials makes it environmentally friendly.",
+      },
+    ],
+    reviewCount: 10,
   };
 
   return (
     <Layout>
       <div className="max-w-6xl mx-auto px-4 py-6 pt-18">
-        <button onClick={() => window.history.back()} className="text-sm mb-4 flex items-center gap-2">
+        <button
+          onClick={() => window.history.back()}
+          className="text-sm mb-4 flex items-center gap-2"
+        >
           ← BACK
         </button>
 
@@ -51,7 +80,9 @@ const ProjectDetails: React.FC = () => {
                 key={index}
                 src={img}
                 alt={`Thumbnail ${index + 1}`}
-                className={`w-20 h-20 object-cover cursor-pointer ${selectedImage === index ? 'border-2 border-blue-500' : ''}`}
+                className={`w-20 h-20 object-cover cursor-pointer ${
+                  selectedImage === index ? "border-2 border-blue-500" : ""
+                }`}
                 onClick={() => setSelectedImage(index)}
               />
             ))}
@@ -66,22 +97,36 @@ const ProjectDetails: React.FC = () => {
           </div>
 
           <div className="w-full lg:w-1/3">
-            <h1 className="text-2xl font-semibold mb-2">{projectDetails.title}</h1>
+            <h1 className="text-2xl font-semibold mb-2">
+              {projectDetails.title}
+            </h1>
             <div className="flex items-center gap-2 mb-4">
               <div className="flex">
                 {[...Array(3)].map((_, i) => (
-                  <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" />
+                  <Star
+                    key={i}
+                    size={16}
+                    className="text-yellow-400 fill-yellow-400"
+                  />
                 ))}
                 {[...Array(2)].map((_, i) => (
                   <Star key={i + 3} size={16} className="text-gray-300" />
                 ))}
               </div>
-              <span className="text-gray-600 text-sm">{projectDetails.reviews} Reviews</span>
+              <span className="text-gray-600 text-sm">
+                {projectDetails.reviewCount} Reviews
+              </span>
             </div>
             <div className="mb-4">
-              <p className="text-gray-600">Progress: {projectDetails.progress}%</p>
-              <p className="text-gray-600">Location: {projectDetails.location}</p>
-              <p className="text-gray-600">Constructor: {projectDetails.constructor}</p>
+              <p className="text-gray-600">
+                Progress: {projectDetails.progress}%
+              </p>
+              <p className="text-gray-600">
+                Location: {projectDetails.location}
+              </p>
+              <p className="text-gray-600">
+                Constructor: {projectDetails.constructor}
+              </p>
             </div>
           </div>
         </div>
@@ -89,33 +134,41 @@ const ProjectDetails: React.FC = () => {
         <div className="max-w-2xl">
           <div className="border-b mb-6 flex gap-6">
             <button
-              className={`pb-2 px-1 ${activeTab === 'description' ? 'border-b-2 border-purple-600 text-purple-600' : 'text-gray-400'}`}
-              onClick={() => setActiveTab('description')}
+              className={`pb-2 px-1 ${
+                activeTab === "description"
+                  ? "border-b-2 border-purple-600 text-purple-600"
+                  : "text-gray-400"
+              }`}
+              onClick={() => setActiveTab("description")}
             >
               Description
             </button>
             <button
-              className={`pb-2 px-1 ${activeTab === 'reviews' ? 'border-b-2 border-purple-600 text-purple-600' : 'text-gray-400'}`}
-              onClick={() => setActiveTab('reviews')}
+              className={`pb-2 px-1 ${
+                activeTab === "reviews"
+                  ? "border-b-2 border-purple-600 text-purple-600"
+                  : "text-gray-400"
+              }`}
+              onClick={() => setActiveTab("reviews")}
             >
               Reviews
             </button>
           </div>
-          {activeTab === 'description' && (
+          {activeTab === "description" && (
             <div>
               <p className="text-gray-600 mb-6">{projectDetails.description}</p>
               <h3 className="font-semibold mb-3">Construction details:</h3>
               <ul className="list-disc pl-5 text-gray-600">
                 {projectDetails.constructionDetails.map((detail, index) => (
-                  <li key={index} className="mb-2">{detail}</li>
+                  <li key={index} className="mb-2">
+                    {detail}
+                  </li>
                 ))}
               </ul>
             </div>
           )}
-          {activeTab === 'reviews' && (
-            <div className="text-gray-600">
-              <p>Reviews content would go here</p>
-            </div>
+          {activeTab === "reviews" && (
+            <Reviews initialReviews={projectDetails.reviews} />
           )}
         </div>
       </div>

@@ -1,6 +1,5 @@
-// components/Public/ComplaintForm.tsx
 import React, { useState } from 'react';
-import { FaUser, FaPhone, FaMapMarkerAlt, FaStar } from 'react-icons/fa'; // Importing React Icons
+import { FaUser, FaPhone, FaMapMarkerAlt, FaStar } from 'react-icons/fa'; 
 
 const ComplaintForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -8,7 +7,7 @@ const ComplaintForm: React.FC = () => {
     contact: '',
     location: '',
     complaint: '',
-    rating: 0, // Adding a rating value
+    rating: 0, 
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -61,7 +60,6 @@ const ComplaintForm: React.FC = () => {
         </div>
       </div>
 
-      {/* Contact Input */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700" htmlFor="contact">
           Contact
@@ -79,7 +77,6 @@ const ComplaintForm: React.FC = () => {
         </div>
       </div>
 
-      {/* Location Input */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700" htmlFor="location">
           Location
@@ -97,7 +94,6 @@ const ComplaintForm: React.FC = () => {
         </div>
       </div>
 
-      {/* Rating */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700">Rate the project</label>
         <div className="flex items-center mt-1">
@@ -111,7 +107,6 @@ const ComplaintForm: React.FC = () => {
         </div>
       </div>
 
-      {/* Complaint Textarea */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700" htmlFor="complaint">
           Make a complaint
@@ -126,7 +121,6 @@ const ComplaintForm: React.FC = () => {
         ></textarea>
       </div>
 
-      {/* Submit/Cancel Buttons */}
       <div className="flex justify-between">
         <button
           className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300"
