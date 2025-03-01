@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
   const currentPath = location.pathname;
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Ensures scrolling to top on navigation
+    window.scrollTo(0, 0); 
   }, [location.pathname]);
 
   useEffect(() => {
