@@ -221,13 +221,28 @@ const HomePage: React.FC = () => {
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  // faq //
+
+  const [expandedItems, setExpandedItems] = useState<number[]>([]);
+  
+  const toggleItem = (index: number) => {
+    setExpandedItems(prev => 
+      prev.includes(index) 
+        ? prev.filter(item => item !== index) 
+        : [...prev, index]
+    );
+  };
+  
+  const isExpanded = (index: number) => expandedItems.includes(index)
+
+
   return (
     <Layout>
       {/* Hero Section */}
 
 <section className="relative w-full pt-16 md:pt-20">
   <div className="min-h-[80vh] bg-white flex flex-col items-center">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-8 md:py-12">
       {/* Heading shows first on mobile */}
       <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none text-center md:text-left mb-6 md:hidden">
         Unlock the<br />
@@ -421,7 +436,7 @@ const HomePage: React.FC = () => {
                 key={index}
                 src={logo}
                 alt="Partner logo"
-                className="h-8 md:h-12 w-auto object-contain"
+                className="h-12 md:h-14 w-auto object-contain"
               />
             ))}
           </div>
@@ -429,10 +444,150 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full px-4 sm:px-6 py-8">
-        <div className="max-w-4xl mx-auto space-y-2">
-          {/* ... FAQ content with responsive padding ... */}
-        </div>
+      <section className="promes-faq w-full px-4 sm:px-6 py-8" aria-labelledby="promes-faq-title">
+      <header className="mb-8">
+        <h2 id="promes-faq-title" className="text-2xl font-bold mb-4">What is Promes</h2>
+        <p className="text-gray-600">
+          Promes is a tool that allows everyone—residents and stakeholders track the progress of important
+          projects in your area
+        </p>
+      </header>
+
+      <div className="space-y-1" role="list">
+        {/* FAQ Item 1 */}
+        <article className="border-b border-gray-200">
+          <header 
+            className="flex justify-between items-center py-4 cursor-pointer"
+            onClick={() => toggleItem(0)}
+          >
+            <h3 className="text-xl font-medium text-gray-900">What is the purpose of promes</h3>
+            <span className="text-2xl font-medium" aria-label={isExpanded(0) ? "Collapse" : "Expand"}>
+              {isExpanded(0) ? '×' : '+'}
+            </span>
+          </header>
+          
+          {isExpanded(0) && (
+            <div className="pb-4 text-gray-600">
+              <p>
+                The purpose of Promes is to increase transparency and community engagement by providing a centralized
+                platform where residents and stakeholders can monitor local projects. It helps bridge the information
+                gap between project managers and the community they serve.
+              </p>
+            </div>
+          )}
+        </article>
+        
+        {/* FAQ Item 2 */}
+        <article className="border-b border-gray-200">
+          <header 
+            className="flex justify-between items-center py-4 cursor-pointer"
+            onClick={() => toggleItem(1)}
+          >
+            <h3 className="text-xl font-medium text-gray-900">What is the purpose of promes</h3>
+            <span className="text-2xl font-medium" aria-label={isExpanded(1) ? "Collapse" : "Expand"}>
+              {isExpanded(1) ? '×' : '+'}
+            </span>
+          </header>
+          
+          {isExpanded(1) && (
+            <div className="pb-4 text-gray-600">
+              <p>
+                Promes allows you to follow projects from conception to completion, providing regular updates on
+                milestones, timelines, and current status. This helps build trust and accountability in community
+                development efforts.
+              </p>
+            </div>
+          )}
+        </article>
+        
+        {/* FAQ Item 3 */}
+        <article className="border-b border-gray-200">
+          <header 
+            className="flex justify-between items-center py-4 cursor-pointer"
+            onClick={() => toggleItem(2)}
+          >
+            <h3 className="text-xl font-medium text-gray-900">What is the purpose of promes</h3>
+            <span className="text-2xl font-medium" aria-label={isExpanded(2) ? "Collapse" : "Expand"}>
+              {isExpanded(2) ? '×' : '+'}
+            </span>
+          </header>
+          
+          {isExpanded(2) && (
+            <div className="pb-4 text-gray-600">
+              <p>
+                Through Promes, you can access detailed information about projects including budgets, responsible
+                parties, expected completion dates, and potential impact on the community.
+              </p>
+            </div>
+          )}
+        </article>
+        
+        {/* FAQ Item 4 */}
+        <article className="border-b border-gray-200">
+          <header 
+            className="flex justify-between items-center py-4 cursor-pointer"
+            onClick={() => toggleItem(3)}
+          >
+            <h3 className="text-xl font-medium text-gray-900">What is the purpose of promes</h3>
+            <span className="text-2xl font-medium" aria-label={isExpanded(3) ? "Collapse" : "Expand"}>
+              {isExpanded(3) ? '×' : '+'}
+            </span>
+          </header>
+          
+          {isExpanded(3) && (
+            <div className="pb-4 text-gray-600">
+              <p>
+                Promes facilitates better decision-making by providing stakeholders with accurate, up-to-date
+                information about projects affecting their community or business interests.
+              </p>
+            </div>
+          )}
+        </article>
+        
+        {/* FAQ Item 5 */}
+        <article className="border-b border-gray-200">
+          <header 
+            className="flex justify-between items-center py-4 cursor-pointer"
+            onClick={() => toggleItem(4)}
+          >
+            <h3 className="text-xl font-medium text-gray-900">What is the purpose of promes</h3>
+            <span className="text-2xl font-medium" aria-label={isExpanded(4) ? "Collapse" : "Expand"}>
+              {isExpanded(4) ? '×' : '+'}
+            </span>
+          </header>
+          
+          {isExpanded(4) && (
+            <div className="pb-4 text-gray-600">
+              <p>
+                The platform encourages community participation by allowing residents to provide feedback, ask
+                questions, and engage with project managers directly through the Promes interface.
+              </p>
+            </div>
+          )}
+        </article>
+        
+        {/* FAQ Item 6 */}
+        <article className="border-b border-gray-200">
+          <header 
+            className="flex justify-between items-center py-4 cursor-pointer"
+            onClick={() => toggleItem(5)}
+          >
+            <h3 className="text-xl font-medium text-gray-900">What is the purpose of promes</h3>
+            <span className="text-2xl font-medium" aria-label={isExpanded(5) ? "Collapse" : "Expand"}>
+              {isExpanded(5) ? '×' : '+'}
+            </span>
+          </header>
+          
+          {isExpanded(5) && (
+            <div className="pb-4 text-gray-600">
+              <p>
+                Promes serves as a historical record of community development, allowing users to review past
+                projects and their outcomes, which can inform future planning and project management.
+              </p>
+            </div>
+          )}
+        </article>
+      </div>
       </section>
 
       {/* Vote of Thanks */}

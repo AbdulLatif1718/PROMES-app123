@@ -35,8 +35,8 @@ const Navbar: React.FC = () => {
       }`}
     >
       {/* ✅ Logo as a NavLink */}
-      <Link to="/" className="flex items-center space-x-2 px-10 cursor-pointer">
-        <img src="/img/image.png" alt="PROMES Logo" className="h-10" />
+      <Link to="/" className="flex items-center space-x-2 px-4 cursor-pointer">
+        <img src="/img/image.png" alt="PROMES Logo" className="h-10 sm:px-2" />
         <span className="text-black text-lg font-semibold">PROMES</span>
       </Link>
 
@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Search & Download Button */}
-      <div className="hidden md:flex items-center space-x-6 pr-12">
+      <div className="hidden md:flex items-center space-x-6 pr-10">
         <FiSearch className="text-black text-xl cursor-pointer hover:text-purple-500 transition" />
         <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-5 py-2 rounded-lg shadow-md hover:scale-105 transition-transform">
           Download
@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Button */}
       <button
-        className="md:hidden text-black text-2xl focus:outline-none"
+        className="md:hidden text-black text-2xl focus:outline-none pr-2"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <FiX /> : <FiMenu />}
