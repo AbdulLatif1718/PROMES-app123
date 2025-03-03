@@ -75,7 +75,7 @@ const ProjectDetails: React.FC = () => {
         </button>
 
         <div className="flex flex-col lg:flex-row gap-6 mb-12">
-          <div className="flex lg:flex-col gap-5 w-full lg:w-24">
+          <div className="flex lg:flex-col gap-3 w-full lg:w-24">
             {projectDetails.images.map((img, index) => (
               <img
                 key={index}
