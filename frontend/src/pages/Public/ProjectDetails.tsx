@@ -31,6 +31,7 @@ const ProjectDetails: React.FC = () => {
       "https://storage.googleapis.com/a1aa/image/tZyD5d9rFgC0hnE5r6OjWRRIY7ci9AOICXjiEiF_Ez8.jpg",
       "https://storage.googleapis.com/a1aa/image/7klHenz4kEetZvrvOAh7-76Z3jdOERQouu5j_BoGV0Q.jpg",
       "https://storage.googleapis.com/a1aa/image/zg8Zn3bB75NWhfG7z1gu3I0FojaupPAqMsAyPY_fnlo.jpg",
+      "https://storage.googleapis.com/a1aa/image/hqMjPN6hr2zN1J555pf0wWe73U9OOIzMUKBRsDNoowc.jpg",
     ],
     title: "Tarkwa community center",
     progress: 50,
@@ -74,7 +75,7 @@ const ProjectDetails: React.FC = () => {
         </button>
 
         <div className="flex flex-col lg:flex-row gap-6 mb-12">
-          <div className="flex lg:flex-col gap-3 w-full lg:w-24">
+          <div className="flex lg:flex-col gap-5 w-full lg:w-24">
             {projectDetails.images.map((img, index) => (
               <img
                 key={index}
@@ -118,9 +119,28 @@ const ProjectDetails: React.FC = () => {
               </span>
             </div>
             <div className="mb-4">
-              <p className="text-gray-600">
-                Progress: {projectDetails.progress}%
-              </p>
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-medium text-purple-900">
+                  Progress
+                </span>
+                <span className="text-xs font-semibold text-purple-900">
+                  {projectDetails.progress}%
+                </span>
+              </div>
+              <div className="relative w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                <div
+                  className="absolute left-0 top-0 h-full bg-purple-900 transition-all duration-500"
+                  style={{ width: `${projectDetails.progress}%` }}
+                  role="progressbar"
+                  aria-valuenow={projectDetails.progress}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                >
+                  <span className="sr-only">
+                    {projectDetails.progress}% Complete
+                  </span>
+                </div>
+              </div>
               <p className="text-gray-600">
                 Location: {projectDetails.location}
               </p>

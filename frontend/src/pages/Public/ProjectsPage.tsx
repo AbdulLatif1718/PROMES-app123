@@ -121,27 +121,31 @@ const Projects: React.FC = () => {
 
   return (
     <Layout>
-      <div className="container mx-auto px-14 py-15 pt-24">
-        <h1 className="text-4xl font-bold text-center mb-10 text-gray-800">
+      <div className="container mx-auto px-4 sm:px-6 md:px-14 py-8 pt-24">
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-10 text-gray-800">
           Projects
         </h1>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6">
           {projects.map((project) => (
             <Link
               key={project.id}
-              to={`/projects/${project.id}`} // Linking to individual project details page
-              className="border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 block bg-white"
+              to={`/projects/${project.id}`}
+              className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-2 sm:p-3 md:p-4 block bg-white"
             >
               <img
                 alt={project.title}
-                className="w-full h-48 object-cover rounded-md mb-3"
+                className="w-full h-48 md:h-52 object-cover rounded-md mb-2"
                 src={project.imgSrc}
               />
-              <h2 className="text-lg font-semibold text-gray-800">{project.title}</h2>
-              <p className="text-sm text-gray-600">{project.status}</p>
-              <p className="text-xs text-gray-500">Started {project.date}</p>
+              <div className="space-y-1">
+                <h2 className="text-base md:text-lg font-semibold text-gray-800 line-clamp-1">
+                  {project.title}
+                </h2>
+                <p className="text-xs md:text-sm text-gray-600">{project.status}</p>
+                <p className="text-xs text-gray-500">Started {project.date}</p>
+              </div>
             </Link>
           ))}
         </div>

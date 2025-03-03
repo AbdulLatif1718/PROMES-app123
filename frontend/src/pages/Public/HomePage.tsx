@@ -28,25 +28,29 @@ const chartData = Array(24)
 const projectData = [
   {
     id: 1,
-    image: "https://storage.googleapis.com/a1aa/image/hqMjPN6hr2zN1J555pf0wWe73U9OOIzMUKBRsDNoowc.jpg",
+    image:
+      "https://storage.googleapis.com/a1aa/image/hqMjPN6hr2zN1J555pf0wWe73U9OOIzMUKBRsDNoowc.jpg",
     title: "Tarkwa School Building",
     category: "Education Infrastructure",
   },
   {
     id: 2,
-    image: "https://storage.googleapis.com/a1aa/image/tZyD5d9rFgC0hnE5r6OjWRRIY7ci9AOICXjiEiF_Ez8.jpg",
+    image:
+      "https://storage.googleapis.com/a1aa/image/tZyD5d9rFgC0hnE5r6OjWRRIY7ci9AOICXjiEiF_Ez8.jpg",
     title: "Accra Community Hospital",
     category: "Healthcare Facility",
   },
   {
     id: 3,
-    image: "https://storage.googleapis.com/a1aa/image/0iuTVoZTVIm8S3lm4SCdcbLQvT2e3jq4KBvyGhkc0aU.jpg",
+    image:
+      "https://storage.googleapis.com/a1aa/image/0iuTVoZTVIm8S3lm4SCdcbLQvT2e3jq4KBvyGhkc0aU.jpg",
     title: "Kumasi Road Expansion",
     category: "Transportation Infrastructure",
   },
   {
     id: 4,
-    image: "https://storage.googleapis.com/a1aa/image/q7RKQqUlXjel33xeL2aGsJIQ9Wz2-MVrX0nKh58FW7s.jpg",
+    image:
+      "https://storage.googleapis.com/a1aa/image/q7RKQqUlXjel33xeL2aGsJIQ9Wz2-MVrX0nKh58FW7s.jpg",
     title: "Tamale Water Project",
     category: "Water & Sanitation",
   },
@@ -78,7 +82,7 @@ const logos = [
   "https://www.shutterstock.com/image-vector/snd-letter-monogram-logo-design-260nw-1936835116.jpg",
   "https://iodghana.org/wp-content/uploads/2021/07/gnpc-logo.png",
   "https://i0.wp.com/ghanagoldexpo.org/wp-content/uploads/2020/02/Ghana-Gas-Logo.jpg",
-  "https://media.istockphoto.com/id/1424452220/vector/lion-head-mascot-logo-design-lion-line-art-vector-illustration.jpg",
+  "https://img.freepik.com/free-vector/colorful-letter-gradient-logo-design_474888-2309.jpg",
 ];
 
 // Main Component
@@ -182,7 +186,7 @@ const HomePage: React.FC = () => {
       ctx.save();
       ctx.clip();
 
-      const imgWidth = canvas.width * 0.83;
+      const imgWidth = canvas.width * 1.0;
       const imgHeight = canvas.height * 0.8;
       ctx.globalAlpha = imageOpacity;
       ctx.drawImage(img, offsetX, 0, imgWidth, imgHeight);
@@ -224,68 +228,70 @@ const HomePage: React.FC = () => {
   // faq //
 
   const [expandedItems, setExpandedItems] = useState<number[]>([]);
-  
+
   const toggleItem = (index: number) => {
-    setExpandedItems(prev => 
-      prev.includes(index) 
-        ? prev.filter(item => item !== index) 
+    setExpandedItems((prev) =>
+      prev.includes(index)
+        ? prev.filter((item) => item !== index)
         : [...prev, index]
     );
   };
-  
-  const isExpanded = (index: number) => expandedItems.includes(index)
 
+  const isExpanded = (index: number) => expandedItems.includes(index);
 
   return (
     <Layout>
       {/* Hero Section */}
 
-<section className="relative w-full pt-16 md:pt-20">
-  <div className="min-h-[80vh] bg-white flex flex-col items-center">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-8 md:py-12">
-      {/* Heading shows first on mobile */}
-      <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none text-center md:text-left mb-6 md:hidden">
-        Unlock the<br />
-        Power of<br />
-        <span className="text-purple-800">Promes</span>
-      </h1>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
-        <div className="space-y-4 md:space-y-6 text-center md:text-left">
-          {/* Heading hidden on mobile, visible on desktop */}
-          <h1 className="hidden md:block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none">
-            Unlock the<br />
-            Power of<br />
-            <span className="text-purple-800">Promes</span>
-          </h1>
-          
-          {/* Text paragraph that follows canvas on mobile */}
-          <p className="text-gray-700 text-sm sm:text-base md:text-lg max-w-md mx-auto md:mx-0">
-            Promes lets everyone—residents and
-            stakeholders track the progress of important
-            projects in your area
-          </p>
-        </div>
+      <section className="relative w-full pt-16 md:pt-20">
+        <div className="min-h-[80vh] bg-white flex flex-col items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-8 md:py-12">
+            {/* Heading shows first on mobile */}
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none text-center md:text-left mb-6 md:hidden">
+              Unlock the
+              <br />
+              Power of
+              <br />
+              <span className="text-purple-800">Promes</span>
+            </h1>
 
-        <div className="relative w-full flex justify-center mb-6 md:mb-0">
-          <canvas
-            ref={canvasRef}
-            width={canvasDimensions.width}
-            height={canvasDimensions.height}
-            className="w-full max-w-full md:max-w-[600px] h-auto"
-          />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
+              <div className="space-y-4 md:space-y-6 text-center md:text-left">
+                {/* Heading hidden on mobile, visible on desktop */}
+                <h1 className="hidden md:block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none">
+                  Unlock the
+                  <br />
+                  Power of
+                  <br />
+                  <span className="text-purple-800">Promes</span>
+                </h1>
+
+                {/* Text paragraph that follows canvas on mobile */}
+                <p className="text-gray-700 text-sm sm:text-base md:text-lg max-w-md mx-auto md:mx-0">
+                  Promes lets everyone—residents and stakeholders track the
+                  progress of important projects in your area
+                </p>
+              </div>
+
+              <div className="relative w-full flex justify-center mb-6 md:mb-0">
+                <canvas
+                  ref={canvasRef}
+                  width={canvasDimensions.width}
+                  height={canvasDimensions.height}
+                  className="w-full max-w-full md:max-w-[600px] h-auto"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Centered button below content */}
+          <div className="mt-4 md:mt-8 mb-12 md:mb-16 px-4">
+            <button className="w-full sm:w-auto px-8 sm:px-10 py-3 bg-purple-800 text-white rounded-full text-base md:text-lg font-medium hover:bg-purple-900 transition shadow-md">
+              Explore Projects
+            </button>
+          </div>
         </div>
-      </div>
-    </div>
-    
-    {/* Centered button below content */}
-    <div className="mt-4 md:mt-8 mb-12 md:mb-16 px-4">
-      <button className="w-full sm:w-auto px-8 sm:px-10 py-3 bg-purple-800 text-white rounded-full text-base md:text-lg font-medium hover:bg-purple-900 transition shadow-md">
-        Explore Projects
-      </button>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Navigation */}
       <section className="w-full mb-12">
@@ -318,8 +324,13 @@ const HomePage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {statsData.map((stat, index) => (
-              <div key={index} className="text-center bg-gray-100 p-4 rounded-lg">
-                <p className="text-2xl font-bold text-purple-900">{stat.value}</p>
+              <div
+                key={index}
+                className="text-center bg-gray-100 p-4 rounded-lg"
+              >
+                <p className="text-2xl font-bold text-purple-900">
+                  {stat.value}
+                </p>
                 <p className="text-sm text-gray-600">{stat.label}</p>
               </div>
             ))}
@@ -342,7 +353,9 @@ const HomePage: React.FC = () => {
               <div
                 key={project.id}
                 className={`absolute inset-0 transition-opacity duration-500 ${
-                  index === imageIndex ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                  index === imageIndex
+                    ? "opacity-100"
+                    : "opacity-0 pointer-events-none"
                 }`}
               >
                 <img
@@ -352,8 +365,12 @@ const HomePage: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-white">
-                  <h2 className="text-xl md:text-2xl font-bold">{project.title}</h2>
-                  <p className="text-xs md:text-sm opacity-80">{project.category}</p>
+                  <h2 className="text-xl md:text-2xl font-bold">
+                    {project.title}
+                  </h2>
+                  <p className="text-xs md:text-sm opacity-80">
+                    {project.category}
+                  </p>
                 </div>
               </div>
             ))}
@@ -371,7 +388,7 @@ const HomePage: React.FC = () => {
                 key={index}
                 onClick={() => setCurrentImage(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  index === imageIndex ? 'bg-purple-700 w-6' : 'bg-gray-300'
+                  index === imageIndex ? "bg-purple-700 w-6" : "bg-gray-300"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -383,7 +400,9 @@ const HomePage: React.FC = () => {
       {/* Expenses and Revenue Section */}
       <section className="w-full mb-16">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-xl font-bold mb-1">Expenses and Revenue Generated</h2>
+          <h2 className="text-xl font-bold mb-1">
+            Expenses and Revenue Generated
+          </h2>
           <p className="text-sm text-gray-500 mb-8">01 - 25 January, 2025</p>
           <div className="h-48 mb-12">
             <ResponsiveContainer width="100%" height="100%">
@@ -402,7 +421,10 @@ const HomePage: React.FC = () => {
               <h3 className="text-base mb-4">Where We Generate Money?</h3>
               <div className="space-y-4">
                 {revenueData.map((item, index) => (
-                  <div key={index} className="flex justify-between items-center">
+                  <div
+                    key={index}
+                    className="flex justify-between items-center"
+                  >
                     <span>{item.label}</span>
                     <span>{item.value}</span>
                   </div>
@@ -413,7 +435,10 @@ const HomePage: React.FC = () => {
               <h3 className="text-base mb-4">Where Your Money Goes?</h3>
               <div className="space-y-4">
                 {expensesData.map((item, index) => (
-                  <div key={index} className="flex justify-between items-center">
+                  <div
+                    key={index}
+                    className="flex justify-between items-center"
+                  >
                     <div>
                       <span>{item.label}</span>
                       <div className="h-0.5 w-24 bg-red-500 mt-1"></div>
@@ -430,13 +455,13 @@ const HomePage: React.FC = () => {
       {/* Logos */}
       <section className="w-full px-4 sm:px-6 py-8 border-t">
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8">
             {logos.map((logo, index) => (
               <img
                 key={index}
                 src={logo}
                 alt="Partner logo"
-                className="h-12 md:h-14 w-auto object-contain"
+                className="h-20 md:h-24 w-auto object-contain"
               />
             ))}
           </div>
@@ -444,150 +469,192 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="promes-faq w-full px-4 sm:px-6 py-8" aria-labelledby="promes-faq-title">
-      <header className="mb-8">
-        <h2 id="promes-faq-title" className="text-2xl font-bold mb-4">What is Promes</h2>
-        <p className="text-gray-600">
-          Promes is a tool that allows everyone—residents and stakeholders track the progress of important
-          projects in your area
-        </p>
-      </header>
+      <section
+        className="promes-faq w-full px-4 sm:px-6 py-8"
+        aria-labelledby="promes-faq-title"
+      >
+        <header className="mb-8">
+          <h2 id="promes-faq-title" className="text-2xl font-bold mb-4">
+            What is Promes
+          </h2>
+          <p className="text-gray-600">
+            Promes is a tool that allows everyone—residents and stakeholders
+            track the progress of important projects in your area
+          </p>
+        </header>
 
-      <div className="space-y-1" role="list">
-        {/* FAQ Item 1 */}
-        <article className="border-b border-gray-200">
-          <header 
-            className="flex justify-between items-center py-4 cursor-pointer"
-            onClick={() => toggleItem(0)}
-          >
-            <h3 className="text-xl font-medium text-gray-900">What is the purpose of promes</h3>
-            <span className="text-2xl font-medium" aria-label={isExpanded(0) ? "Collapse" : "Expand"}>
-              {isExpanded(0) ? '×' : '+'}
-            </span>
-          </header>
-          
-          {isExpanded(0) && (
-            <div className="pb-4 text-gray-600">
-              <p>
-                The purpose of Promes is to increase transparency and community engagement by providing a centralized
-                platform where residents and stakeholders can monitor local projects. It helps bridge the information
-                gap between project managers and the community they serve.
-              </p>
-            </div>
-          )}
-        </article>
-        
-        {/* FAQ Item 2 */}
-        <article className="border-b border-gray-200">
-          <header 
-            className="flex justify-between items-center py-4 cursor-pointer"
-            onClick={() => toggleItem(1)}
-          >
-            <h3 className="text-xl font-medium text-gray-900">What is the purpose of promes</h3>
-            <span className="text-2xl font-medium" aria-label={isExpanded(1) ? "Collapse" : "Expand"}>
-              {isExpanded(1) ? '×' : '+'}
-            </span>
-          </header>
-          
-          {isExpanded(1) && (
-            <div className="pb-4 text-gray-600">
-              <p>
-                Promes allows you to follow projects from conception to completion, providing regular updates on
-                milestones, timelines, and current status. This helps build trust and accountability in community
-                development efforts.
-              </p>
-            </div>
-          )}
-        </article>
-        
-        {/* FAQ Item 3 */}
-        <article className="border-b border-gray-200">
-          <header 
-            className="flex justify-between items-center py-4 cursor-pointer"
-            onClick={() => toggleItem(2)}
-          >
-            <h3 className="text-xl font-medium text-gray-900">What is the purpose of promes</h3>
-            <span className="text-2xl font-medium" aria-label={isExpanded(2) ? "Collapse" : "Expand"}>
-              {isExpanded(2) ? '×' : '+'}
-            </span>
-          </header>
-          
-          {isExpanded(2) && (
-            <div className="pb-4 text-gray-600">
-              <p>
-                Through Promes, you can access detailed information about projects including budgets, responsible
-                parties, expected completion dates, and potential impact on the community.
-              </p>
-            </div>
-          )}
-        </article>
-        
-        {/* FAQ Item 4 */}
-        <article className="border-b border-gray-200">
-          <header 
-            className="flex justify-between items-center py-4 cursor-pointer"
-            onClick={() => toggleItem(3)}
-          >
-            <h3 className="text-xl font-medium text-gray-900">What is the purpose of promes</h3>
-            <span className="text-2xl font-medium" aria-label={isExpanded(3) ? "Collapse" : "Expand"}>
-              {isExpanded(3) ? '×' : '+'}
-            </span>
-          </header>
-          
-          {isExpanded(3) && (
-            <div className="pb-4 text-gray-600">
-              <p>
-                Promes facilitates better decision-making by providing stakeholders with accurate, up-to-date
-                information about projects affecting their community or business interests.
-              </p>
-            </div>
-          )}
-        </article>
-        
-        {/* FAQ Item 5 */}
-        <article className="border-b border-gray-200">
-          <header 
-            className="flex justify-between items-center py-4 cursor-pointer"
-            onClick={() => toggleItem(4)}
-          >
-            <h3 className="text-xl font-medium text-gray-900">What is the purpose of promes</h3>
-            <span className="text-2xl font-medium" aria-label={isExpanded(4) ? "Collapse" : "Expand"}>
-              {isExpanded(4) ? '×' : '+'}
-            </span>
-          </header>
-          
-          {isExpanded(4) && (
-            <div className="pb-4 text-gray-600">
-              <p>
-                The platform encourages community participation by allowing residents to provide feedback, ask
-                questions, and engage with project managers directly through the Promes interface.
-              </p>
-            </div>
-          )}
-        </article>
-        
-        {/* FAQ Item 6 */}
-        <article className="border-b border-gray-200">
-          <header 
-            className="flex justify-between items-center py-4 cursor-pointer"
-            onClick={() => toggleItem(5)}
-          >
-            <h3 className="text-xl font-medium text-gray-900">What is the purpose of promes</h3>
-            <span className="text-2xl font-medium" aria-label={isExpanded(5) ? "Collapse" : "Expand"}>
-              {isExpanded(5) ? '×' : '+'}
-            </span>
-          </header>
-          
-          {isExpanded(5) && (
-            <div className="pb-4 text-gray-600">
-              <p>
-                Promes serves as a historical record of community development, allowing users to review past
-                projects and their outcomes, which can inform future planning and project management.
-              </p>
-            </div>
-          )}
-        </article>
-      </div>
+        <div className="space-y-1" role="list">
+          {/* FAQ Item 1 */}
+          <article className="border-b border-gray-200">
+            <header
+              className="flex justify-between items-center py-4 cursor-pointer"
+              onClick={() => toggleItem(0)}
+            >
+              <h3 className="text-xl font-medium text-gray-900">
+                What is the purpose of promes
+              </h3>
+              <span
+                className="text-2xl font-medium"
+                aria-label={isExpanded(0) ? "Collapse" : "Expand"}
+              >
+                {isExpanded(0) ? "×" : "+"}
+              </span>
+            </header>
+
+            {isExpanded(0) && (
+              <div className="pb-4 text-gray-600">
+                <p>
+                  The purpose of Promes is to increase transparency and
+                  community engagement by providing a centralized platform where
+                  residents and stakeholders can monitor local projects. It
+                  helps bridge the information gap between project managers and
+                  the community they serve.
+                </p>
+              </div>
+            )}
+          </article>
+
+          {/* FAQ Item 2 */}
+          <article className="border-b border-gray-200">
+            <header
+              className="flex justify-between items-center py-4 cursor-pointer"
+              onClick={() => toggleItem(1)}
+            >
+              <h3 className="text-xl font-medium text-gray-900">
+                What is the purpose of promes
+              </h3>
+              <span
+                className="text-2xl font-medium"
+                aria-label={isExpanded(1) ? "Collapse" : "Expand"}
+              >
+                {isExpanded(1) ? "×" : "+"}
+              </span>
+            </header>
+
+            {isExpanded(1) && (
+              <div className="pb-4 text-gray-600">
+                <p>
+                  Promes allows you to follow projects from conception to
+                  completion, providing regular updates on milestones,
+                  timelines, and current status. This helps build trust and
+                  accountability in community development efforts.
+                </p>
+              </div>
+            )}
+          </article>
+
+          {/* FAQ Item 3 */}
+          <article className="border-b border-gray-200">
+            <header
+              className="flex justify-between items-center py-4 cursor-pointer"
+              onClick={() => toggleItem(2)}
+            >
+              <h3 className="text-xl font-medium text-gray-900">
+                What is the purpose of promes
+              </h3>
+              <span
+                className="text-2xl font-medium"
+                aria-label={isExpanded(2) ? "Collapse" : "Expand"}
+              >
+                {isExpanded(2) ? "×" : "+"}
+              </span>
+            </header>
+
+            {isExpanded(2) && (
+              <div className="pb-4 text-gray-600">
+                <p>
+                  Through Promes, you can access detailed information about
+                  projects including budgets, responsible parties, expected
+                  completion dates, and potential impact on the community.
+                </p>
+              </div>
+            )}
+          </article>
+
+          {/* FAQ Item 4 */}
+          <article className="border-b border-gray-200">
+            <header
+              className="flex justify-between items-center py-4 cursor-pointer"
+              onClick={() => toggleItem(3)}
+            >
+              <h3 className="text-xl font-medium text-gray-900">
+                What is the purpose of promes
+              </h3>
+              <span
+                className="text-2xl font-medium"
+                aria-label={isExpanded(3) ? "Collapse" : "Expand"}
+              >
+                {isExpanded(3) ? "×" : "+"}
+              </span>
+            </header>
+
+            {isExpanded(3) && (
+              <div className="pb-4 text-gray-600">
+                <p>
+                  Promes facilitates better decision-making by providing
+                  stakeholders with accurate, up-to-date information about
+                  projects affecting their community or business interests.
+                </p>
+              </div>
+            )}
+          </article>
+
+          {/* FAQ Item 5 */}
+          <article className="border-b border-gray-200">
+            <header
+              className="flex justify-between items-center py-4 cursor-pointer"
+              onClick={() => toggleItem(4)}
+            >
+              <h3 className="text-xl font-medium text-gray-900">
+                What is the purpose of promes
+              </h3>
+              <span
+                className="text-2xl font-medium"
+                aria-label={isExpanded(4) ? "Collapse" : "Expand"}
+              >
+                {isExpanded(4) ? "×" : "+"}
+              </span>
+            </header>
+
+            {isExpanded(4) && (
+              <div className="pb-4 text-gray-600">
+                <p>
+                  The platform encourages community participation by allowing
+                  residents to provide feedback, ask questions, and engage with
+                  project managers directly through the Promes interface.
+                </p>
+              </div>
+            )}
+          </article>
+
+          {/* FAQ Item 6 */}
+          <article className="border-b border-gray-200">
+            <header
+              className="flex justify-between items-center py-4 cursor-pointer"
+              onClick={() => toggleItem(5)}
+            >
+              <h3 className="text-xl font-medium text-gray-900">
+                What is the purpose of promes
+              </h3>
+              <span
+                className="text-2xl font-medium"
+                aria-label={isExpanded(5) ? "Collapse" : "Expand"}
+              >
+                {isExpanded(5) ? "×" : "+"}
+              </span>
+            </header>
+
+            {isExpanded(5) && (
+              <div className="pb-4 text-gray-600">
+                <p>
+                  Promes serves as a historical record of community development,
+                  allowing users to review past projects and their outcomes,
+                  which can inform future planning and project management.
+                </p>
+              </div>
+            )}
+          </article>
+        </div>
       </section>
 
       {/* Vote of Thanks */}
