@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import Layout from "../../components/Shared/Layout";
 import { BarChart, Bar, ResponsiveContainer } from "recharts";
 
@@ -286,9 +287,11 @@ const HomePage: React.FC = () => {
 
           {/* Centered button below content */}
           <div className="mt-4 md:mt-8 mb-12 md:mb-16 px-4">
-            <button className="w-full sm:w-auto px-8 sm:px-10 py-3 bg-purple-800 text-white rounded-full text-base md:text-lg font-medium hover:bg-purple-900 transition shadow-md">
-              Explore Projects
-            </button>
+            <Link to="/projects">
+              <button className="w-full sm:w-auto px-8 sm:px-10 py-3 bg-purple-800 text-white rounded-full text-base md:text-lg font-medium hover:bg-purple-900 transition shadow-md">
+                Explore Projects
+              </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -343,10 +346,10 @@ const HomePage: React.FC = () => {
         <div className="max-w-4xl mx-auto relative">
           <button
             onClick={prevImage}
-            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition"
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition"
             aria-label="Previous project"
           >
-            <span className="text-xl text-purple-900">‹</span>
+            <span className="text-5xl text-white">‹</span>
           </button>
           <div className="relative aspect-video overflow-hidden rounded-lg">
             {projectData.map((project, index) => (
@@ -377,10 +380,10 @@ const HomePage: React.FC = () => {
           </div>
           <button
             onClick={nextImage}
-            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition"
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition"
             aria-label="Next project"
           >
-            <span className="text-xl text-purple-900">›</span>
+            <span className="text-5xl text-white">›</span>
           </button>
           <div className="flex justify-center gap-2 mt-4">
             {[0, 1, 2, 3].map((index) => (

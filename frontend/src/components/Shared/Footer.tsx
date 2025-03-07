@@ -64,7 +64,7 @@ const Footer = () => {
             <a href="#" className="hover:underline">
               Explore
             </a>
-            <a href="#" className="hover:underline">
+            <a href="./Pubilc/ComplaintForm" className="hover:underline">
               Make a complain
             </a>
           </div>
@@ -106,7 +106,7 @@ const Footer = () => {
       </footer>
 
       {/* White Space with Logo */}
-      <div className="bg-white py-16 relative">
+      <div className="bg-white py-8 relative">
         <div className="max-w-7xl mx-auto flex justify-center">
           {/* Logo positioned as a bridge between purple and white sections */}
           <div className="absolute -top-8">

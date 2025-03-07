@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-0 right-0 space-y-16 w-full bg-white shadow-lg flex flex-col items-center justify-center space-y-8 text-lg z-50 pt-24"
+            className="fixed top-0 right-0 w-full bg-white shadow-lg flex flex-col items-center justify-center space-y-8 text-lg z-50 pt-24"
           >
             {/* Close Button */}
             <button
