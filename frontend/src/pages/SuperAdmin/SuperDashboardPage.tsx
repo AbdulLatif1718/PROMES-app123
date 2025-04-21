@@ -1,28 +1,20 @@
-import React from "react";
-import Layout from "../../components/Shared/Layout";
+import AdminNav from "../../components/Shared/AdminNav";
+import { ProjectsSection } from "./sections/ProjectsSection";
+import { OverviewSection } from "./sections/OverviewSection";
+import { ProjectSummarySection } from "./sections/ProjectSummarySection";
+import { RecentActivity } from "./sections/RecentActivitySection";
+import { TopButtonsSection } from "./sections/TopButtonsSection";
+import { JSX } from "react";
 
-const SuperDashboardPage: React.FC = () => {
+export default function SuperDashboardPage(): JSX.Element {
   return (
-    <Layout>
-      <div className="bg-gray-100 min-h-screen p-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Super Admin Dashboard</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold text-gray-800">Constituencies</h2>
-            <p className="mt-2 text-gray-600">Manage all constituencies.</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold text-gray-800">Users</h2>
-            <p className="mt-2 text-gray-600">Manage system users.</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold text-gray-800">Projects</h2>
-            <p className="mt-2 text-gray-600">Monitor all projects.</p>
-          </div>
-        </div>
-      </div>
-    </Layout>
+    <main className="flex flex-col w-full max-w-[1408px] mx-auto gap-6 px-8 py-8">
+      <AdminNav />
+      <TopButtonsSection />
+      <OverviewSection />
+      <ProjectSummarySection />
+      <RecentActivity />
+      <ProjectsSection />
+    </main>
   );
-};
-
-export default SuperDashboardPage;
+}

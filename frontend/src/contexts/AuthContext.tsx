@@ -1,40 +1,62 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { User } from "../types/User";
+import { User, CreateUserDto } from "../types/User";
+import { getUsers, createUser } from "../services/mockDb";
 
 interface AuthContextType {
   user: User | null;
-  login: (userData: { token: string; user: User }) => void;
+  users: User[];
+  login: (email: string, role: "admin" | "super_admin") => void;
   logout: () => void;
+  createAdmin: (userData: CreateUserDto) => User;
+  deleteAdmin: (userId: string) => boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-interface AuthProviderProps {
-  children: ReactNode;
-}
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [users, setUsers] = useState<User[]>(getUsers());
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(() => {
-    // Check localStorage for existing user data on initial load
-    const storedUser = localStorage.getItem("user");
-    return storedUser ? JSON.parse(storedUser) : null;
-  });
-
-  const login = (userData: { token: string; user: User }) => {
-    const { token, user } = userData;
-    localStorage.setItem("token", token); // Store token in localStorage
-    localStorage.setItem("user", JSON.stringify(user)); // Store user data in localStorage
-    setUser(user); // Update state
+  const login = (email: string, role: "admin" | "super_admin") => {
+    const foundUser = users.find(u => u.email === email && u.role === role) || {
+      id: Date.now().toString(),
+      email,
+      role,
+      createdAt: new Date()
+    };
+    setUser(foundUser);
+    localStorage.setItem("user", JSON.stringify(foundUser));
   };
 
   const logout = () => {
-    localStorage.removeItem("token"); // Remove token from localStorage
-    localStorage.removeItem("user"); // Remove user data from localStorage
-    setUser(null); // Clear user state
+    setUser(null);
+    localStorage.removeItem("user");
+  };
+
+  const createAdmin = (userData: CreateUserDto) => {
+    if (user?.role !== "super_admin") {
+      throw new Error("Unauthorized: Only super admins can create admins");
+    }
+    const newAdmin = createUser(userData);
+    setUsers([...users, newAdmin]);
+    return newAdmin;
+  };
+
+  const deleteAdmin = (userId: string) => {
+    if (user?.role !== "super_admin") {
+      throw new Error("Unauthorized: Only super admins can delete admins");
+    }
+    const success = deleteUser(userId);
+    if (success) {
+      setUsers(users.filter(u => u.id !== userId));
+    }
+    return success;
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider 
+      value={{ user, users, login, logout, createAdmin, deleteAdmin }}
+    >
       {children}
     </AuthContext.Provider>
   );
