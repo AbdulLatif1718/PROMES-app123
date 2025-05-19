@@ -9,6 +9,8 @@ import RevenuePage from "./pages/Public/RevenuePage";
 import Login from "./pages/Auth/Login";
 import DashboardPage from "./pages/Admin/DashboardPage";
 import SuperDashboardPage from "./pages/SuperAdmin/SuperDashboardPage";
+import { CreateConstituencyAdminForm } from "./pages/SuperAdmin/forms/CreateConstituencyAdminForm";
+import { ProjectRegistrationForm } from "./pages/SuperAdmin/forms/ProjectRegistrationForm";
 
 interface PrivateRouteProps {
   children: React.ReactNode;
@@ -61,6 +63,16 @@ const AppRoutes: React.FC = () => {
               <SuperDashboardPage />
             </PrivateRoute>
           }
+        />
+        {/* Create Constituency Admin Form */}
+        <Route
+          path="/create-constituency-admin"
+          element={<CreateConstituencyAdminForm />}
+        />
+                {/* Project Registration Form */}
+                <Route
+          path="/project-registration"
+          element={<ProjectRegistrationForm />}
         />
 
         {/* Fallback Route */}
